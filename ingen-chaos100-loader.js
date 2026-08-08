@@ -14,6 +14,11 @@
   document.open();
   document.write(html);
   document.close();
+
+  const tracker=document.createElement("script");
+  tracker.src="trex-tracker.js?v=tracker-v1";
+  tracker.defer=true;
+  document.body.appendChild(tracker);
 })().catch(err => {
   document.body.innerHTML = "<pre style='color:#9f9;background:#030605;padding:20px'>IN-GEN loader fault: " + String(err) + "</pre>";
 });
