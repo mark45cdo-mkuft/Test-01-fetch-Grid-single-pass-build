@@ -5,6 +5,7 @@
   const $ = s => document.querySelector(s);
   let base = null;
   let track = null;
+  const ASSESSMENT_URL="https://docs.google.com/document/d/e/2PACX-1vSvM5gDlNvt7npYHhp_XfsJvuntUhq184By5xO_pA4b_gCWeXb6dM6ZxwN8rE6S4ghUsCj2VKR21oEP/pub";
 
   function installPresentationGuard(){
     if($("#jpPresentationGuard")) return;
@@ -42,6 +43,17 @@
       }
     `;
     document.head.appendChild(style);
+  }
+
+  function installAssessmentRoute(){
+    const input=$("#docUrl");
+    if(!input) return;
+    input.value=ASSESSMENT_URL;
+    input.setAttribute("aria-label","Assessment verification Google Doc URL");
+    const label=input.previousElementSibling;
+    if(label && label.tagName==="LABEL") label.textContent="ASSESSMENT VERIFICATION GOOGLE DOC URL";
+    const status=$("#assignmentStatus");
+    if(status) status.textContent="Verification document loaded. Decode this remote source to reveal the assessment's uppercase secret message.";
   }
 
   function geo(){
@@ -120,6 +132,7 @@
 
   function install(){
     installPresentationGuard();
+    installAssessmentRoute();
     if($("#trexTrackerBtn")) return;
     const locBtn=[...document.querySelectorAll("button")].find(b=>/SHOW YOUR OWN LOCATION/i.test(b.textContent));
     if(!locBtn) return setTimeout(install,100);
@@ -140,7 +153,7 @@
       const frame=card.querySelector("#mapFrame");
       card.insertBefore(out,frame||card.firstChild);
     }
-    logLine("Simulated T-Rex proximity tracker online. Liability department has left the building.","a");
+    logLine("Assessment verification source armed. Simulated T-Rex proximity tracker online.","a");
   }
 
   install();
