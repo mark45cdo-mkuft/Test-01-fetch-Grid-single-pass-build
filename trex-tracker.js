@@ -6,6 +6,44 @@
   let base = null;
   let track = null;
 
+  function installPresentationGuard(){
+    if($("#jpPresentationGuard")) return;
+    const style=document.createElement("style");
+    style.id="jpPresentationGuard";
+    style.textContent=`
+      details.devtools{
+        margin-top:12px !important;
+        border:2px solid #385643 !important;
+        background:#030806 !important;
+        box-shadow:inset 0 0 20px rgba(0,0,0,.42),0 0 0 1px rgba(116,242,154,.08) !important;
+        padding:0 !important;
+      }
+      details.devtools summary{
+        display:block !important;
+        padding:11px 12px !important;
+        border:0 !important;
+        background:#09110c !important;
+        color:#a7bbaa !important;
+        font-weight:800 !important;
+        letter-spacing:.075em !important;
+      }
+      details.devtools summary::before{
+        content:"▸  ";
+        color:#74f29a;
+      }
+      details.devtools[open] summary{
+        border-bottom:1px solid #385643 !important;
+        background:#0b1510 !important;
+      }
+      details.devtools[open] summary::before{content:"▾  ";}
+      details.devtools .devinner{
+        padding:11px !important;
+        background:#040906 !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   function geo(){
     return new Promise((resolve,reject)=>{
       if(!navigator.geolocation) return reject(new Error("geolocation unavailable"));
@@ -81,6 +119,7 @@
   }
 
   function install(){
+    installPresentationGuard();
     if($("#trexTrackerBtn")) return;
     const locBtn=[...document.querySelectorAll("button")].find(b=>/SHOW YOUR OWN LOCATION/i.test(b.textContent));
     if(!locBtn) return setTimeout(install,100);
