@@ -14,6 +14,6 @@
   };
 
   const script = document.createElement("script");
-  script.src = "https://cdn.jsdelivr.net/gh/mark45cdo-mkuft/Test-01-fetch-Grid-single-pass-build@22d758e9491d8e44a9e697f3e17f27433e7f23f9/ingen-app.js";
+  script.src = "https://cdn.jsdelivr.net/gh/mark45cdo-mkuft/Test-01-fetch-Grid-single-pass-build@fd0827fc6ada7264830d784b5d95232e5985eb22/ingen-app.js";
   document.head.appendChild(script);
 })();
