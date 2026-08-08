@@ -1,9 +1,9 @@
 /* IN-GEN Park Systems — canonical state-aware incident loader */
 (async function(){
   "use strict";
-  const root = "https://cdn.jsdelivr.net/gh/mark45cdo-mkuft/Test-01-fetch-Grid-single-pass-build@5e1715a4aa2a29774f0f0b77a8d3110ad7e6d619/payload/chaos100-";
+  const root = "payload/chaos100-";
   const parts = await Promise.all([0,1,2,3,4,5].map(async i => {
-    const r = await fetch(root + i + ".b64");
+    const r = await fetch(root + i + ".b64", {cache:"no-store"});
     if (!r.ok) throw new Error("payload part " + i + " returned HTTP " + r.status);
     return (await r.text()).trim();
   }));
