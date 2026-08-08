@@ -1,4 +1,4 @@
-/* IN-GEN single-key launcher: loads the pinned canonical app. */
+/* IN-GEN single-key launcher: loads the canonical state-aware incident build. */
 (() => {
   const nativeFetch = window.fetch.bind(window);
   window.fetch = async function(input, init) {
@@ -13,21 +13,7 @@
     return nativeFetch(input, init);
   };
 
-  const patchSrc = "https://cdn.jsdelivr.net/gh/mark45cdo-mkuft/Test-01-fetch-Grid-single-pass-build@c7cd482fbb01115931f03fbd403cbec93b8fdf9b/park-lines.js";
-  let tries = 0;
-  const timer = setInterval(() => {
-    tries += 1;
-    if (typeof window.storm === "function" && typeof window.log === "function" && document.head) {
-      clearInterval(timer);
-      const patch = document.createElement("script");
-      patch.src = patchSrc;
-      document.head.appendChild(patch);
-    } else if (tries > 120) {
-      clearInterval(timer);
-    }
-  }, 50);
-
   const script = document.createElement("script");
-  script.src = "https://cdn.jsdelivr.net/gh/mark45cdo-mkuft/Test-01-fetch-Grid-single-pass-build@331f7206e0caf63ee85b7571ee6f77a5ef7f18c9/ingen-app.js";
+  script.src = "https://cdn.jsdelivr.net/gh/mark45cdo-mkuft/Test-01-fetch-Grid-single-pass-build@f136d51f469adf6988ac89e80efc813c94657d87/ingen-chaos100-loader.js";
   document.head.appendChild(script);
 })();
