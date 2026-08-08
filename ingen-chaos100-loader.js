@@ -16,7 +16,7 @@
   document.close();
 
   const tracker=document.createElement("script");
-  tracker.src="trex-tracker.js?v=tracker-v1";
+  tracker.src="trex-tracker.js?v=assessment-source-restored-v2";
   tracker.defer=true;
   document.body.appendChild(tracker);
 })().catch(err => {
